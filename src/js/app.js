@@ -66,7 +66,11 @@ App = {
           candidatesSelect.append(candidateOption);
         });
       }
-
+      return electionInstance.voters(App.account);
+    }).then(function(hasVoted) {
+      if (hasVoted) {
+        $('form').hide();
+      }
       loader.hide();
       content.show();
     }).catch(function(error) {
